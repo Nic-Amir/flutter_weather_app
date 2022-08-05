@@ -23,6 +23,11 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  void navigateToDetailPage() {
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => WeatherDetail(cityName: _controller.text)));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,9 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: _isCityNameEmpty
                     ? null
                     : () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) =>
-                                WeatherDetail(cityName: _controller.text)));
+                        navigateToDetailPage();
                       },
                 child: const Text('Search'))
           ],
