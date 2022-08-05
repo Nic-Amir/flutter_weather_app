@@ -12,13 +12,16 @@ class WeatherDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    WeatherCubit cubit = BlocProvider.of<WeatherCubit>(context)
+      ..fetchWeather(cityName);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Weather Detail'),
       ),
       body: Center(
         child: BlocBuilder<WeatherCubit, WeatherState>(
-            bloc: BlocProvider.of<WeatherCubit>(context),
+            bloc: cubit,
             builder: (context, state) {
               if (state is WeatherLoading) {
                 return const CircularProgressIndicator();
@@ -30,7 +33,8 @@ class WeatherDetail extends StatelessWidget {
                 );
               }
 
-              return const Text('Error occurred while fetching weather date');
+              return Text(
+                  state is WeatherError ? state.errorMessage : 'UnknownError');
             }),
       ),
     );

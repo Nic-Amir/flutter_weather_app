@@ -11,6 +11,7 @@ class WeatherService {
       queryParameters: {
         'q': cityName,
         'appid': apiKey,
+        'units': 'metric',
       },
     );
 

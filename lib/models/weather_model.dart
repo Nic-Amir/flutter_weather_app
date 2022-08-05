@@ -38,8 +38,6 @@ class Main {
     required this.tempMax,
     required this.pressure,
     required this.humidity,
-    required this.seaLevel,
-    required this.grndLevel,
   });
 
   final double temp;
@@ -48,8 +46,6 @@ class Main {
   final double tempMax;
   final int pressure;
   final int humidity;
-  final int seaLevel;
-  final int grndLevel;
 
   factory Main.fromJson(String str) => Main.fromMap(json.decode(str));
 
@@ -60,8 +56,6 @@ class Main {
         tempMax: json["temp_max"].toDouble(),
         pressure: json["pressure"],
         humidity: json["humidity"],
-        seaLevel: json["sea_level"],
-        grndLevel: json["grnd_level"],
       );
 }
 

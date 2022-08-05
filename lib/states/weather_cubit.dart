@@ -20,7 +20,7 @@ class WeatherCubit extends Cubit<WeatherState> {
         WeatherLoaded(weatherModel: weatherModel),
       );
     } catch (e) {
-      emit(WeatherError());
+      emit(WeatherError(errorMessage: e.toString()));
     }
   }
 }
